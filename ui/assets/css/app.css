@@ -1,1 +1,10 @@
 /* This file is for your main application css. */
+.logo {
+  /* width: 519px;
+     height: 71px;
+     display: inline-block;
+     margin-bottom: 1em;
+     background-size: 519px 71px; 
+  */
+  background-image: url("/images/pocketweb.png")!important;
+}

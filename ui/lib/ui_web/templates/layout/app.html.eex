@@ -29,6 +29,7 @@
         <%= render @view_module, @view_template, assigns %>
       </main>
 
+      <footer>Updated over WLAN on Raspberry Pi, running Nerves</footer>
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>

@@ -61,4 +61,9 @@ config :logger, level: :debug
 # of this file so it overrides the configuration defined above.
 # Uncomment to use target specific configurations
 
+config :nerves_firmware_ssh,
+  authorized_keys: [
+    File.read!(Path.join(System.user_home!(), ".ssh/id_rsa.pub"))
+  ]
+
 # import_config "#{Mix.Project.config[:target]}.exs"

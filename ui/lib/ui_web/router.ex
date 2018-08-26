@@ -13,10 +13,17 @@ defmodule UiWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/api", UiWeb do
+    pipe_through :api
+
+  end
+
   scope "/", UiWeb do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/leds", LedsController, :index
+    post "/leds", LedsController, :update
   end
 
   # Other scopes may use custom stacks.

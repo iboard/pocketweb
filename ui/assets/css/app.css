@@ -8,3 +8,29 @@
   */
   background-image: url("/images/pocketweb.png")!important;
 }
+
+footer {
+  border-top: 1px solid darkgray;
+  padding-top: 0.25em;
+  margin-top: 3em;
+  font-size: smaller;
+  text-align: right;
+}
+
+.feature {
+  margin: 0;
+  padding: 0;
+}
+
+.feature .-description {
+  background: lightyellow;
+  border: 1px solid darkgrey;
+  border-radius: 0.5em;
+  padding: 1em;
+}
+
+.-left, .-right {
+  display: inline-block;
+  border: 1px solid red;
+  vertical-align: top;
+}

@@ -1,10 +1,18 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "PocketWeb" %></h2>
-  <p class="lead">A simple webserver in your pocket<br/>On a Raspberry Pi3. An Elixir/Nerves/Phoenix Project<br/>by Andi Altendorfer</p>
+  <h2>Raspberry Pocket Web</h2>
 </div>
 
 <div class="row marketing">
-  <div class="col-lg-6">
+  <div class="col-lg-9">
+    <h4>Controll Your Raspberry Pi3</h4>
+    <ul>
+      <li>
+        <%= link "piLEDs", to: leds_path(@conn, :index) %>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-lg-3">
     <h4>Resources</h4>
     <ul>
       <li>

@@ -1,0 +1,46 @@
+<div class="feature">
+  <h1>pi LEDs</h1>
+
+  <div class="col12 -description">
+    <p>Blink the built in LEDs of an RaspberryPi with varialble frequency.</p>
+
+    <p>Switch Red, Green, and Blue LED on the Breadboard on and off.</p>
+
+    <pre><code>BREADBOARD CIRCUIT
+
+&lt;PIN 18&gt;-----&lt;BLUE  LED&gt;----&lt;220Ohm&gt;----&lt;GRD&gt;
+&lt;PIN 23&gt;-----&lt;GREEN LED&gt;----&lt;220Ohm&gt;----&lt;GRD&gt;
+&lt;PIN 24&gt;-----&lt;RED   LED&gt;----&lt;220Ohm&gt;----&lt;GRD&gt;
+    </code></pre>
+  </div>
+
+  <%= form_for @conn, leds_path(@conn, :update), [class: "form form-vertical col12"], fn f -> %>
+  <div class="-left col6">
+    <div class="form-group">
+      <label for="led">Raspberry's buildt in LED Key</label>
+      <div class="col3">
+        <%= text_input f, :led_key, value: "led0" %>
+        <span style="small">led0 (green), led1 (red)</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="duration">Duration (ms)</label>
+      <div class="col3">
+        <%= number_input f, :duration, value: "200" %>
+        <%= submit "Set", name: "action", value: :set %>
+      </div>
+    </div>
+  </div>
+  <div class="-right col6">
+    <div class="form-group">
+      <label for="action">Breadboard LEDs</label>
+      <div class="col3">
+        <%= submit "Blue On", name: "action", value: :blue %>
+        <%= submit "Red On", name: "action", value: :red %>
+        <%= submit "Green On", name: "action", value: :green %>
+        <%= submit "All Off", name: "action", value: :off %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

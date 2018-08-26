@@ -1,6 +1,20 @@
-# Firmware
+# Pocket Web
 
-**TODO: Add description**
+**For Raspberry Pi 3**
+
+### BREADBOARD CIRCUIT
+
+      LEDS:
+      
+      <PIN 18>-----<BLUE  LED>----<220Ohm>----<GRD>
+      <PIN 23>-----<GREEN LED>----<220Ohm>----<GRD>
+      <PIN 24>-----<RED   LED>----<220Ohm>----<GRD>
+
+      PUSH-BUTTON:
+
+      <PIN 26>-----<10kOhm>---+---<10kOhm>----<+3V>
+                              |
+                              ----<BUTTON>----<GRD>
 
 ## Targets
 

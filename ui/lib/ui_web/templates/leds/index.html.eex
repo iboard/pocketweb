@@ -6,12 +6,19 @@
 
     <p>Switch Red, Green, and Blue LED on the Breadboard on and off.</p>
 
-    <pre><code>BREADBOARD CIRCUIT
+    <p><strong>BREADBOARD CIRCUIT</strong></p>
+<pre>LEDS:
 
 &lt;PIN 18&gt;-----&lt;BLUE  LED&gt;----&lt;220Ohm&gt;----&lt;GRD&gt;
 &lt;PIN 23&gt;-----&lt;GREEN LED&gt;----&lt;220Ohm&gt;----&lt;GRD&gt;
 &lt;PIN 24&gt;-----&lt;RED   LED&gt;----&lt;220Ohm&gt;----&lt;GRD&gt;
-    </code></pre>
+
+PUSH-BUTTON:
+
+&lt;PIN 26&gt;-----&lt;10kOhm&gt;---+---&lt;10kOhm&gt;----&lt;+3V&gt;
+                        |
+                        ----&lt;BUTTON&gt;----&lt;GRD&gt;
+</pre>
   </div>
 
   <%= form_for @conn, leds_path(@conn, :update), [class: "form form-vertical col12"], fn f -> %>
@@ -36,8 +43,8 @@
       <label for="led-name">Breadboard LEDs</label>
       <div class="col3">
         <div data-led="blue" class="led-button">Blue <span id="blue-led"></span></div>
-        <div data-led="red" class="led-button">Red <span id="red-led"></span></div>
         <div data-led="green" class="led-button">Green <span id="green-led"></span></div>
+        <div data-led="red" class="led-button">Red <span id="red-led"></span></div>
         <div data-led="off" class="led-button">All Off</div>
         <div id="push-button-1" class="push-button">Push Button 1 released</div>
       </div>

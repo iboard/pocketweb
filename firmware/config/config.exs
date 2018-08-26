@@ -18,7 +18,9 @@ config :shoehorn,
 
 config :nerves_init_gadget,
   node_name: :nerves,
-  mdns_domain: "nerves.local"
+  mdns_domain: "nerves.local",
+  node_name: nil,
+  node_host: :mdns_domain
 
 # For Devices that don't support usb gadget such as Raspberry Pi 1, 2, and 3:
 # config :nerves_init_gadget,

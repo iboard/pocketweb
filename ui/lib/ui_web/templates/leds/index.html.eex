@@ -33,14 +33,15 @@
   </div>
   <div class="-right col6">
     <div class="form-group">
-      <label for="action">Breadboard LEDs</label>
+      <label for="led-name">Breadboard LEDs</label>
       <div class="col3">
-        <%= submit "Blue On", name: "action", value: :blue %>
-        <%= submit "Red On", name: "action", value: :red %>
-        <%= submit "Green On", name: "action", value: :green %>
-        <%= submit "All Off", name: "action", value: :off %>
+        <div data-led="blue" class="led-button">Blue <span id="blue-led"></span></div>
+        <div data-led="red" class="led-button">Red <span id="red-led"></span></div>
+        <div data-led="green" class="led-button">Green <span id="green-led"></span></div>
+        <div data-led="off" class="led-button">All Off</div>
       </div>
     </div>
   </div>
   <% end %>
 </div>
+

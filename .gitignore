@@ -24,3 +24,5 @@ erl_crash.dump
 rel/*
 !rel/config.exs
 !rel/vm.args
+ui/node_modules/
+ui/package-lock.json

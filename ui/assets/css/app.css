@@ -31,6 +31,16 @@ footer {
 
 .-left, .-right {
   display: inline-block;
-  border: 1px solid red;
   vertical-align: top;
+}
+
+.led-button {
+  display: inline-block;
+  padding: 0.25em;
+  border-radius: 0.125em;
+  background: steelblue;
+  color: white;
+}
+.led-button:hover {
+  cursor: pointer;
 }

@@ -15,8 +15,11 @@ use Mix.Config
 # which you typically run after static files are built.
 config :ui, UiWeb.Endpoint,
   load_from_system_env: true,
-  url: [host: "nerves.local", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  url: [host: System.get_env("MIX_HOST"), port: System.get_env("MIX_PORT")],
+  port: System.get_env("MIX_PORT"),
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  debug_errors: false,
+  check_origin: false
 
 # Do not print debug messages in production
 config :logger, level: :info

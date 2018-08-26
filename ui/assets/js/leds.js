@@ -25,4 +25,18 @@ channel.on("led-switched", payload => {
   }
 })
 
+channel.on("button-pressed", payload => {
+  console.log("BUTTON PRESSED", payload)
+  $("#push-button-1").css('background-color', 'darkred')
+  $("#push-button-1").css('color', 'white')
+  $("#push-button-1").html("Button 1 pressed")
+})
+
+channel.on("button-released", payload => {
+  console.log("BUTTON RELEASED", payload)
+  $("#push-button-1").css('background-color', 'transparent')
+  $("#push-button-1").css('color', 'lightgray')
+  $("#push-button-1").html("Button 1 released")
+})
+
 

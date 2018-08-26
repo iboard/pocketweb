@@ -44,3 +44,12 @@ footer {
 .led-button:hover {
   cursor: pointer;
 }
+
+.push-button {
+  padding: 0.5em;
+  border: 1px solid darkgray;
+  border-radius: 0.25em;
+  margin-top: 0.5em;
+  text-align: center;
+  display: block;
+}

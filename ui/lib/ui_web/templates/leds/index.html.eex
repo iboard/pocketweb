@@ -39,6 +39,7 @@
         <div data-led="red" class="led-button">Red <span id="red-led"></span></div>
         <div data-led="green" class="led-button">Green <span id="green-led"></span></div>
         <div data-led="off" class="led-button">All Off</div>
+        <div id="push-button-1" class="push-button">Push Button 1 released</div>
       </div>
     </div>
   </div>

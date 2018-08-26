@@ -1,6 +1,76 @@
-# RaspApp
+# Pocket Web README
 
 Based on `Hello Phoenix` from Nerves-Examples.
+
+**For Raspberry Pi 3**
+
+### BREADBOARD CIRCUIT
+
+      LEDS:
+      
+      <PIN 18>-----<BLUE  LED>----<220Ohm>----<GRD>
+      <PIN 23>-----<GREEN LED>----<220Ohm>----<GRD>
+      <PIN 24>-----<RED   LED>----<220Ohm>----<GRD>
+
+      PUSH-BUTTON:
+
+      <PIN 26>-----<10kOhm>---+---<10kOhm>----<+3V>
+                              |
+                              ----<BUTTON>----<GRD>
+
+# Pocket Web
+
+## Features
+
+  - Set Blink Duration for Raspberry's build in LEDs
+  - Switch on LEDs Blue, Green, and Red via Web-interface
+  - Turn off all LEDs via Web-Interface
+  - Web Interface shows state of color LEDs
+  - Push button on breadboard turns all leds off when pressed
+  - Push button on breadboard turns random leds on when released
+
+## First Setup and Burn SSD
+
+      export MIX_ENV=prod
+      export MIX_TARGET=rpi3
+      export MIX_HOST=nerves.local
+      export MIX_PORT=80
+      export PORT-80
+
+      cd ui
+      mix deps.get
+      cd assets
+      npm install
+      node_modules/brunch/bin/brunch build --production
+      cd ..
+      mix phx.digest
+
+      cd ../firmware
+      mix deps.get
+      mix firmware
+      mix firmware burn
+
+## Update SSD via WiFi
+
+      export MIX_ENV=prod
+      export MIX_TARGET=rpi3
+      export MIX_HOST=nerves.local
+      export MIX_PORT=80
+      export PORT-80
+
+      cd ui
+      mix deps.get
+      cd assets
+      npm install
+      node_modules/brunch/bin/brunch build --production
+      cd ..
+      mix phx.digest
+
+      cd ../firmware
+      mix deps.get
+      mix firmware
+      mix firmware push nerves.local
+
 
 # Hello Phoenix
 

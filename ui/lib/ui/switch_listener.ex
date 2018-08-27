@@ -85,4 +85,12 @@ defmodule Ui.SwitchListener do
     end)
   end
 
+  defp read_sensor(pid, channel) do
+    {channel_value, _} = Integer.parse("#{channel + 40}", 16)
+    I2c.write(pid, <<channel_value>>)
+    I2c.read(pid, 1)
+    <<value>> = I2c.read(pid, 1)
+    value
+  end
+
 end

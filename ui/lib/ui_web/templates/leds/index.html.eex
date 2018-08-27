@@ -47,6 +47,8 @@ PUSH-BUTTON:
         <div data-led="red" class="led-button">Red <span id="red-led"></span></div>
         <div data-led="off" class="led-button">All Off</div>
         <div id="push-button-1" class="push-button">Push Button 1 released</div>
+        <hr>
+        <h1 id="temperature"></h1>
       </div>
     </div>
   </div>

@@ -39,4 +39,9 @@ channel.on("button-released", payload => {
   $("#push-button-1").html("Button 1 released")
 })
 
+channel.on("temperature", payload => {
+  console.log("Temperature Measurement received", payload)
+  $("#temperature").html(`${payload.celcius} ˚C`)
+})
+
 

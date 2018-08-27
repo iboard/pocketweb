@@ -21,9 +21,10 @@ defmodule UiWeb.Router do
   scope "/", UiWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
-    get "/leds", LedsController, :index
-    post "/leds", LedsController, :update
+    get "/", LedsController, :index
+    post "/", LedsController, :update
+    get "/home", PageController, :index
+    get "/circuits", PageController, :circuits
   end
 
   # Other scopes may use custom stacks.

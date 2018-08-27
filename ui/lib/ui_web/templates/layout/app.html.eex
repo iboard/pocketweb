@@ -16,7 +16,9 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="/">Home</a></li>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/">Controller</a></li>
+            <li><a href="/circuits">Circuit</a></li>
           </ul>
         </nav>
         <span class="logo"></span>

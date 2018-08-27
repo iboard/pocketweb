@@ -26,27 +26,5 @@
 </div>
 <% end %>
 
-<div class="col12 -description">
-  <h2>Circuit</h2>
-
-  <pre>LEDS:
-
-&lt;PIN 18&gt;-----&lt;BLUE  LED&gt;----&lt;220Ohm&gt;----&lt;GRD&gt;
-&lt;PIN 23&gt;-----&lt;GREEN LED&gt;----&lt;220Ohm&gt;----&lt;GRD&gt;
-&lt;PIN 24&gt;-----&lt;RED   LED&gt;----&lt;220Ohm&gt;----&lt;GRD&gt;
-
-PUSH-BUTTON:
-
-&lt;PIN 26&gt;-----&lt;10kOhm&gt;---+---&lt;10kOhm&gt;----&lt;+3V&gt;
-                        |
-                        ----&lt;BUTTON&gt;----&lt;GRD&gt;
-  </pre>
-
-  <p>For the complete circuit, including the thermometer stuff, please 
-  read <a target="_blank" 
-          href="https://blog.altendorfer.at/2018/andi/elixir/video/nerves/2018/08/26/NervesRpi3.html"
-          >this blog post</a>
-</div>
-
 </div>
 

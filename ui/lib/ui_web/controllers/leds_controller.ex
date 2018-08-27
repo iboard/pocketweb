@@ -37,11 +37,11 @@ defmodule UiWeb.LedsController do
 
   def update_leds( %{ duration: duration, led_key: key, action: action }) do
     case action do
-      "blue" -> switch_led_on(@blue_led_pin)
-      "red" -> switch_led_on(@red_led_pin)
-      "green" -> switch_led_on(@green_led_pin)
+      "blue" -> Ui.Leds.led_on(@blue_led_pin)
+      "red" -> Ui.Leds.led_on(@red_led_pin)
+      "green" -> Ui.Leds.led_on(@green_led_pin)
       "set" -> set_leds(key, duration)
-      "off" -> switch_leds_off()
+      "off" -> Ui.Leds.leds_off()
       _ -> Logger.warn("UNKNOWN ACTION RECEIVED #{action}")
     end
   end
@@ -52,29 +52,6 @@ defmodule UiWeb.LedsController do
         { key, [ trigger: "timer", delay_off: duration, delay_on: duration ]}
       ])
     end
-  end
-
-  defp switch_led_on(pin) do
-    if System.get_env("MIX_TARGET") != "host" do
-      case GPIO.start_link(pin, :output) do
-        {:ok, output_pid} ->     GPIO.write(output_pid, 1)
-        error -> IO.inspect({:ERROR_SWITCH_LED_ON, error})
-      end
-    end
-    UiWeb.Endpoint.broadcast("nerves:lobby", "led-on", %{ led: pin })
-  end
-
-  defp switch_leds_off do
-    if System.get_env("MIX_TARGET") != "host" do
-      [@red_led_pin, @blue_led_pin, @green_led_pin]
-      |> Enum.each( fn(pin) -> 
-        case GPIO.start_link(pin, :output) do
-          {:ok, output_pid} ->     GPIO.write(output_pid, 0)
-          error -> IO.inspect({:ERROR_SWITCH_LED_OFF, pin, error})
-        end
-      end)
-    end
-    UiWeb.Endpoint.broadcast("nerves:lobby", "leds-off", %{})
   end
 
   defp param_to_int(param) when param == "", do: 200

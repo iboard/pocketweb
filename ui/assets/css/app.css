@@ -36,11 +36,20 @@ footer {
 
 .led-button {
   display: inline-block;
-  padding: 0.25em;
+  margin: 0;
+  padding: 0;
   border-radius: 0.125em;
   background: steelblue;
   color: white;
+  width: 24%;
+  height: auto;
+  text-align: center;
 }
+.-green { background: darkgreen;}
+.-red { background: darkred;}
+.-blue { background: darkblue;}
+  
+
 .led-button:hover {
   cursor: pointer;
 }
@@ -52,4 +61,15 @@ footer {
   margin-top: 0.5em;
   text-align: center;
   display: block;
+}
+
+#temperature {
+  display: block;
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid black;
+  background: darkslategray;
+  color: white;
+  margin-top: 0.5em;
+  text-align: center;
 }

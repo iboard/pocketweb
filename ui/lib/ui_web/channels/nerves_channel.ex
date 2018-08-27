@@ -15,10 +15,10 @@ defmodule UiWeb.NervesChannel do
   def handle_in("led-switched", payload, socket) do
     broadcast socket, "led-switched", payload
     case payload["led"] do
-      "red" -> Ui.SwitchListener.led_on(:red)
-      "blue" -> Ui.SwitchListener.led_on(:blue)
-      "green" -> Ui.SwitchListener.led_on(:green)
-      "off" -> Ui.SwitchListener.leds_off()
+      "red" -> Ui.Leds.led_on(:red)
+      "blue" -> Ui.Leds.led_on(:blue)
+      "green" -> Ui.Leds.led_on(:green)
+      "off" -> Ui.Leds.leds_off()
     end
     {:reply, {:ok, payload}, socket}
   end

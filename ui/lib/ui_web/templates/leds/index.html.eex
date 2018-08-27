@@ -1,13 +1,35 @@
 <div class="feature">
   <h1>pi LEDs</h1>
 
-  <div class="col12 -description">
-    <p>Blink the built in LEDs of an RaspberryPi with varialble frequency.</p>
+  <%= form_for @conn, leds_path(@conn, :update), [class: "form"], fn f -> %>
+  <div class="form-group">
+    <label for="led">Raspberry's buildt in LED Key</label><br/>
+    <%= text_input f, :led_key, value: "led0" %>
+    <span style="small">led0 (green), led1 (red)</small>
+  </div>
+  <div class="form-group">
+    <label for="duration">Duration (ms)</label><br/>
+    <%= number_input f, :duration, value: "200" %>
+    <%= submit "Set", name: "action", value: :set %>
+  </div>
+</div>
+<div class="form-group">
+  <label for="led-name">Breadboard LEDs</label><br/>
+  <div data-led="blue" class="led-button -blue">&nbsp;<span id="blue-led"></span>&nbsp;</div>
+  <div data-led="green" class="led-button -green">&nbsp;<span id="green-led"></span>&nbsp;</div>
+  <div data-led="red" class="led-button -red">&nbsp;<span id="red-led"></span>&nbsp;</div>
+  <div data-led="off" class="led-button">All Off</div>
+  <div id="push-button-1" class="push-button">Push Button 1 released</div>
+  <hr>
+  <label for="temperature">Temperature</label><br/>
+  <h1 id="temperature"></h1>
+</div>
+<% end %>
 
-    <p>Switch Red, Green, and Blue LED on the Breadboard on and off.</p>
+<div class="col12 -description">
+  <h2>Circuit</h2>
 
-    <p><strong>BREADBOARD CIRCUIT</strong></p>
-<pre>LEDS:
+  <pre>LEDS:
 
 &lt;PIN 18&gt;-----&lt;BLUE  LED&gt;----&lt;220Ohm&gt;----&lt;GRD&gt;
 &lt;PIN 23&gt;-----&lt;GREEN LED&gt;----&lt;220Ohm&gt;----&lt;GRD&gt;
@@ -18,40 +40,13 @@ PUSH-BUTTON:
 &lt;PIN 26&gt;-----&lt;10kOhm&gt;---+---&lt;10kOhm&gt;----&lt;+3V&gt;
                         |
                         ----&lt;BUTTON&gt;----&lt;GRD&gt;
-</pre>
-  </div>
+  </pre>
 
-  <%= form_for @conn, leds_path(@conn, :update), [class: "form form-vertical col12"], fn f -> %>
-  <div class="-left col6">
-    <div class="form-group">
-      <label for="led">Raspberry's buildt in LED Key</label>
-      <div class="col3">
-        <%= text_input f, :led_key, value: "led0" %>
-        <span style="small">led0 (green), led1 (red)</small>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="duration">Duration (ms)</label>
-      <div class="col3">
-        <%= number_input f, :duration, value: "200" %>
-        <%= submit "Set", name: "action", value: :set %>
-      </div>
-    </div>
-  </div>
-  <div class="-right col6">
-    <div class="form-group">
-      <label for="led-name">Breadboard LEDs</label>
-      <div class="col3">
-        <div data-led="blue" class="led-button">Blue <span id="blue-led"></span></div>
-        <div data-led="green" class="led-button">Green <span id="green-led"></span></div>
-        <div data-led="red" class="led-button">Red <span id="red-led"></span></div>
-        <div data-led="off" class="led-button">All Off</div>
-        <div id="push-button-1" class="push-button">Push Button 1 released</div>
-        <hr>
-        <h1 id="temperature"></h1>
-      </div>
-    </div>
-  </div>
-  <% end %>
+  <p>For the complete circuit, including the thermometer stuff, please 
+  read <a target="_blank" 
+          href="https://blog.altendorfer.at/2018/andi/elixir/video/nerves/2018/08/26/NervesRpi3.html"
+          >this blog post</a>
+</div>
+
 </div>
 

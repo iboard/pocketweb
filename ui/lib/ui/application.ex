@@ -12,8 +12,8 @@ defmodule Ui.Application do
       supervisor(UiWeb.Endpoint, []),
       # Start your own worker by calling: Ui.Worker.start_link(arg1, arg2, arg3)
       # worker(Ui.Worker, [arg1, arg2, arg3]),
-      worker(Ui.SwitchListener, []),
-      worker(Ui.Temperature, [])
+      worker(Ui.SwitchListener, [], restart: :permanent),
+      worker(Ui.Temperature, [], restart: :permanent)
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

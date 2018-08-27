@@ -41,7 +41,7 @@ channel.on("button-released", payload => {
 
 channel.on("temperature", payload => {
   console.log("Temperature Measurement received", payload)
-  $("#temperature").html(`${payload.celcius} ˚C`)
+  $("#temperature").html(`${payload.celsius}<small>˚C</small> &nbsp; ${payload.farenheit}<small>˚F</small>`)
 })
 
 

@@ -1,30 +1,33 @@
 <div class="feature">
-  <h1>pi LEDs</h1>
+  <h1>Raspberry Pi3 Controller</h1>
 
-  <%= form_for @conn, leds_path(@conn, :update), [class: "form"], fn f -> %>
-  <div class="form-group">
-    <label for="led">Raspberry's buildt in LED Key</label><br/>
-    <%= text_input f, :led_key, value: "led0" %>
-    <span style="small">led0 (green), led1 (red)</small>
-  </div>
-  <div class="form-group">
-    <label for="duration">Duration (ms)</label><br/>
-    <%= number_input f, :duration, value: "200" %>
-    <%= submit "Set", name: "action", value: :set %>
-  </div>
-</div>
-<div class="form-group">
-  <label for="led-name">Breadboard LEDs</label><br/>
-  <div data-led="blue" class="led-button -blue">&nbsp;<span id="blue-led"></span>&nbsp;</div>
-  <div data-led="green" class="led-button -green">&nbsp;<span id="green-led"></span>&nbsp;</div>
-  <div data-led="red" class="led-button -red">&nbsp;<span id="red-led"></span>&nbsp;</div>
-  <div data-led="off" class="led-button">All Off</div>
-  <div id="push-button-1" class="push-button">Push Button 1 released</div>
-  <hr>
-  <label for="temperature">Temperature</label><br/>
-  <h1 id="temperature"></h1>
-</div>
-<% end %>
-
+  <%= form_for @conn, leds_path(@conn, :update), [class: "form control-form"], fn f -> %>
+    <h2 class="-span2">Raspberry On Board</h2>
+    <div class="form-group col -left">
+      <label for="led">Select LED key</label>
+      <%= text_input f, :led_key, value: "led0" %>
+      <div class="input-hint">led0 (green), led1 (red)</div>
+    </div>
+    <div class="form-group col -right">
+      <label for="duration">Duration (ms)</label>
+      <%= number_input f, :duration, value: "200" %>
+      <%= submit "Set", name: "action", value: :set %>
+    </div>
+    <h2 class="-span2">Circuit On Breadboard</h2>
+    <div class="form-group col -left">
+      <label for="led-name">Breadboard LEDs</label>
+      <div class="led-buttons">
+        <div data-led="blue" class="led-button -blue">&nbsp;<span id="blue-led"></span>&nbsp;</div>
+        <div data-led="green" class="led-button -green">&nbsp;<span id="green-led"></span>&nbsp;</div>
+        <div data-led="red" class="led-button -red">&nbsp;<span id="red-led"></span>&nbsp;</div>
+        <div data-led="off" class="led-button">All Off</div>
+      </div>
+      <div id="push-button-1" class="push-button">Push Button 1 released</div>
+    </div>
+    <div class="form-group col -right">
+      <label for="temperature">Temperature</label>
+      <div id="temperature"></div>
+    </div>
+  <% end %>
 </div>
 

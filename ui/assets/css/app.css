@@ -34,16 +34,23 @@ footer {
   vertical-align: top;
 }
 
-.led-button {
-  display: inline-block;
+.led-buttons {
   margin: 0;
   padding: 0;
+  min-height: 2.4em;
+}
+.led-button {
+  padding: 0;
+  padding-top: 0.5em;
+  display: inline-block;
+  margin: 0;
   border-radius: 0.125em;
   background: steelblue;
   color: white;
   width: 24%;
-  height: auto;
+  height: 2.4em;
   text-align: center;
+  font-size: 1em;
 }
 .-green { background: darkgreen;}
 .-red { background: darkred;}
@@ -70,6 +77,38 @@ footer {
   border: 1px solid black;
   background: darkslategray;
   color: white;
-  margin-top: 0.5em;
+  margin: 0;
+  min-height: 2.8em;
+  height: auto;
   text-align: center;
+  border-radius: 0.25em;
+  font-size: 2em;
+}
+#temperature small {
+  color: darkgray;
+  font-weight: 100;
+  margin-left: 0.25em;
+}
+
+.control-form {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+}
+.control-form label {
+  display: block;
+}
+
+.input-hint {
+  font-size: x-small;
+}
+
+.control-form .col {
+  display: inline-block;
+}
+
+.control-form .-span2 {
+  grid-column: 1 / span 2;
+  border-bottom: 1px solid darkgray;
+  margin-bottom: 1em;
 }

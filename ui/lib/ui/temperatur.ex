@@ -21,19 +21,30 @@ defmodule Ui.Temperature do
     loop(state)
   end
 
-  defp set_leds(celsius) when celsius < 20 do
-    Ui.Leds.leds_off()
+  defp set_leds(celsius) when celsius < 17 do
     Ui.Leds.led_on(:blue)
+    Ui.Leds.led_off(:green)
+    Ui.Leds.led_off(:red)
   end
-
-  defp set_leds(celsius) when celsius > 24 do
-    Ui.Leds.leds_off()
+  defp set_leds(celsius) when celsius < 20 do
+    Ui.Leds.led_on(:blue)
+    Ui.Leds.led_on(:green)
+    Ui.Leds.led_off(:red)
+  end
+  defp set_leds(celsius) when celsius < 22 do
+    Ui.Leds.led_off(:blue)
+    Ui.Leds.led_on(:green)
+    Ui.Leds.led_off(:red)
+  end
+  defp set_leds(celsius) when celsius < 25 do
+    Ui.Leds.led_off(:blue)
+    Ui.Leds.led_on(:green)
     Ui.Leds.led_on(:red)
   end
-
   defp set_leds(_) do
-    Ui.Leds.leds_off()
-    Ui.Leds.led_on(:green)
+    Ui.Leds.led_off(:blue)
+    Ui.Leds.led_off(:green)
+    Ui.Leds.led_on(:red)
   end
 
   defp broadcast({celsius, farenheit}) do

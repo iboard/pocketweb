@@ -16,6 +16,7 @@
     <h2 class="-span2">Circuit On Breadboard</h2>
     <div class="form-group col -left">
       <label for="led-name">Breadboard LEDs</label>
+      <p>blue &lt; 17˚C, blue+green between 17˚C and 20˚C,<br/>green between 20˚C and 25˚C, red &gt;= 25˚C</p>
       <div class="led-buttons">
         <div data-led="blue" class="led-button -blue">&nbsp;<span id="blue-led"></span>&nbsp;</div>
         <div data-led="green" class="led-button -green">&nbsp;<span id="green-led"></span>&nbsp;</div>

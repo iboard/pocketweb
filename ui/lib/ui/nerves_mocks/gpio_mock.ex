@@ -25,7 +25,7 @@ defmodule NervesMocks.GPIO do
   defp initialize_button_loop(pin) do
     {_,switch_listener,_,_} =
       Supervisor.which_children(Ui.Supervisor)
-      |> Enum.find( fn({module,pid,_,_}) -> module == Ui.SwitchListener end)
+      |> Enum.find( fn({module,_,_,_}) -> module == Ui.SwitchListener end)
 
     button_loop(switch_listener,pin)
   end
@@ -35,7 +35,7 @@ defmodule NervesMocks.GPIO do
     Logger.info( inspect {:random_button_press, pin } )
     send(pid, {:gpio_interrupt, pin, :falling})
 
-    :timer.sleep( Enum.random(100..2000) )
+    :timer.sleep( Enum.random(500..2000) )
     send(pid, {:gpio_interrupt, pin, :rising})
 
     button_loop(pid,pin)

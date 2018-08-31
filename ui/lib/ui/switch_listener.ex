@@ -2,9 +2,9 @@ defmodule Ui.SwitchListener do
   require Logger
   alias Ui.Leds
 
-  @push_button_1_pin 26
+  @push_button_1_pin Application.get_env(:ui, :button_1_pin, 26)
 
-  def gpio do
+  defp gpio do
     if System.get_env("MIX_TARGET") != "host", do: ElixirALE.GPIO, else: NervesMocks.GPIO
   end
 
@@ -31,16 +31,15 @@ defmodule Ui.SwitchListener do
   # Infinite loop receiving interrupts from gpio
   defp listen_loop() do
     receive do
+
+      {:gpio_interrupt, p, :falling} ->
+        UiWeb.Endpoint.broadcast("nerves:lobby", "button-pressed", %{ button: p })
+        Leds.leds_off()
+
       {:gpio_interrupt, p, :rising} ->
-        Logger.info("Received rising event on pin #{p}")
         UiWeb.Endpoint.broadcast("nerves:lobby", "button-released", %{ button: p })
         Leds.random_leds()
 
-
-      {:gpio_interrupt, p, :falling} ->
-        Logger.info("Received falling event on pin #{p}")
-        UiWeb.Endpoint.broadcast("nerves:lobby", "button-pressed", %{ button: p })
-        Leds.leds_off()
     end
 
     listen_loop()

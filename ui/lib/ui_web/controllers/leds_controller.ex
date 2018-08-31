@@ -1,7 +1,6 @@
 defmodule UiWeb.LedsController do
   require Logger
   alias Nerves.Leds
-  alias ElixirALE.GPIO
 
   @blue_led_pin 18
   @red_led_pin 24
@@ -9,33 +8,26 @@ defmodule UiWeb.LedsController do
 
   use UiWeb, :controller
 
-  def index(conn, params) do
+  def index(conn, _params) do
     render(conn, "index.html")
   end
 
   def update(conn, params) do
-    with opts = %{ duration: duration, action: action, led_key: key } = cast(params), 
-         _update = update_leds(opts) do
-           conn
-           |> put_flash(:info, "LEDs UPDATE #{key}: #{inspect opts}")
-           |> redirect(to: leds_path(conn, :index))
-    else 
-      error -> conn
-      |> put_flash(:info, "ERROR LEDs UPDATE #{key}: #{inspect error},  #{inspect opts}")
+    with opts = %{duration: _duration, action: _action, led_key: key} = cast(params),
+         update_leds(opts) do
+      conn
+      |> put_flash(:info, "LEDs UPDATE #{key}: #{inspect(opts)}")
       |> redirect(to: leds_path(conn, :index))
-         end
+    end
   end
 
   defp cast(params) do
     duration = param_to_int(params["duration"])
 
-    %{ duration: duration,
-      action: params["action"],
-      led_key: params["led_key"]
-    }
+    %{duration: duration, action: params["action"], led_key: params["led_key"]}
   end
 
-  def update_leds( %{ duration: duration, led_key: key, action: action }) do
+  def update_leds(%{duration: duration, led_key: key, action: action}) do
     case action do
       "blue" -> Ui.Leds.led_on(@blue_led_pin)
       "red" -> Ui.Leds.led_on(@red_led_pin)
@@ -49,13 +41,14 @@ defmodule UiWeb.LedsController do
   defp set_leds(key, duration) do
     if System.get_env("MIX_TARGET") != "host" do
       Leds.set([
-        { key, [ trigger: "timer", delay_off: duration, delay_on: duration ]}
+        {key, [trigger: "timer", delay_off: duration, delay_on: duration]}
       ])
     end
   end
 
   defp param_to_int(param) when param == "", do: 200
   defp param_to_int(param) when param == nil, do: 200
+
   defp param_to_int(param) when is_binary(param) do
     {v, _} = Integer.parse(param)
     v
